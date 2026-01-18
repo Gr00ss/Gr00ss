@@ -1,0 +1,44 @@
+name: Update GitHub Stats
+
+on:
+  schedule:
+    # Запускается каждый час
+    - cron: '0 * * * *'
+  
+  # Позволяет запускать вручную
+  workflow_dispatch:
+
+jobs:
+  update-stats:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - name: Install FFmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+      
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install github-readme-terminal python-dotenv tzdata
+      
+      - name: Generate stats GIF
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: python generate_stats.py
+      
+      - name: Commit and push if changed
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add output.gif
+          git diff --quiet && git diff --staged --quiet || (git commit -m "🤖 Update GitHub stats [automated]" && git push)

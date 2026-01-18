@@ -4,6 +4,7 @@
 
   # 👋 Hi, I'm R3dshark
   
+  ![GitHub Stats Terminal](https://raw.githubusercontent.com/Gr00ss/Gr00ss/main/output.gif)
   
   ---
   
