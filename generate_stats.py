@@ -1,8 +1,13 @@
 from datetime import datetime
-import gifos
 import os
 from dotenv import load_dotenv
 from zoneinfo import ZoneInfo
+
+load_dotenv()
+if os.getenv('GITHUB_TOKEN'):
+    os.environ['GITHUB_TOKEN'] = os.getenv('GITHUB_TOKEN')
+
+import gifos
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 FONT_FILE_LOGO = os.path.join(BASE_DIR, "fonts", "vtks-blocketo.regular.ttf")
@@ -10,23 +15,75 @@ FONT_FILE_BITMAP = os.path.join(BASE_DIR, "fonts", "gohufont-uni-14.pil")
 FONT_FILE_TRUETYPE = os.path.join(BASE_DIR, "fonts", "IosevkaTermNerdFont-Bold.ttf")
 FONT_FILE_MONA = os.path.join(BASE_DIR, "fonts", "Inversionz.otf")
 
-def main():
-    load_dotenv()
+def fetch_stats_safe(username):
+    """Безопасное получение статистики без merged PR percentage"""
+    import requests
     
     token = os.getenv('GITHUB_TOKEN')
-    if token:
-        os.environ['GITHUB_TOKEN'] = token
+    headers = {'Authorization': f'Bearer {token}'}
     
-    print("📊 Fetching GitHub stats...")
+    query = """
+    query($login: String!) {
+      user(login: $login) {
+        contributionsCollection {
+          totalCommitContributions
+          restrictedContributionsCount
+        }
+        repositories(first: 100, ownerAffiliations: OWNER, orderBy: {field: STARGAZERS, direction: DESC}) {
+          totalCount
+          nodes {
+            stargazerCount
+            primaryLanguage {
+              name
+            }
+          }
+        }
+        pullRequests {
+          totalCount
+        }
+      }
+    }
+    """
+    
+    response = requests.post(
+        'https://api.github.com/graphql',
+        json={'query': query, 'variables': {'login': username}},
+        headers=headers
+    )
+    
+    data = response.json()['data']['user']
+    
+    class Stats:
+        def __init__(self):
+            self.total_stargazers = sum(repo['stargazerCount'] for repo in data['repositories']['nodes'])
+            self.total_commits_last_year = data['contributionsCollection']['totalCommitContributions']
+            self.total_pull_requests_made = data['pullRequests']['totalCount']
+            self.total_repo_contributions = data['repositories']['totalCount']
+            
+            languages = {}
+            for repo in data['repositories']['nodes']:
+                if repo['primaryLanguage']:
+                    lang = repo['primaryLanguage']['name']
+                    languages[lang] = languages.get(lang, 0) + 1
+            
+            self.languages_sorted = sorted(languages.items(), key=lambda x: x[1], reverse=True)
+            
+            self.user_rank = type('obj', (object,), {'level': 'S+'})()
+    
+    return Stats()
+
+def main():
+    print("Fetching GitHub stats...")
     try:
-        git_user_details = gifos.utils.fetch_github_stats(user_name="Gr00ss")
+        git_user_details = fetch_stats_safe("Gr00ss")
     except (ZeroDivisionError, Exception) as e:
         print(f"⚠️ Warning: Error fetching stats: {e}")
+        print("Using fallback GIF without stats")
         create_simple_gif()
         return
     
-    print("🖥️ Creating terminal...")
-    t = gifos.Terminal(750, 500, 15, 15, FONT_FILE_BITMAP, 15)
+    print("Creating terminal...")
+    t = gifos.Terminal(750, 500, 15, 15)
 
     t.gen_text("", 1, count=20)
     t.toggle_show_cursor(False)
@@ -53,25 +110,13 @@ def main():
     t.clear_frame()
     t.gen_text("Initiating Boot Sequence ", 1, contin=True)
     t.gen_typing_text(".....", 1, contin=True)
-    t.gen_text("\x1b[96m", 1, count=0, contin=True)
+    t.gen_text("", 1, count=10, contin=True)
     
-    t.set_font(FONT_FILE_LOGO, 66)
-    os_logo_text = "GIF OS"
-    mid_row = (t.num_rows + 1) // 2
-    mid_col = (t.num_cols - len(os_logo_text) + 1) // 2
-    effect_lines = gifos.effects.text_scramble_effect_lines(
-        os_logo_text, 3, include_special=False
-    )
-    for i in range(len(effect_lines)):
-        t.delete_row(mid_row + 1)
-        t.gen_text(effect_lines[i], mid_row + 1, mid_col + 1)
-    
-    t.set_font(FONT_FILE_BITMAP, 15)
     t.clear_frame()
     t.clone_frame(5)
     
     t.toggle_show_cursor(False)
-    t.gen_text("\x1b[93mZOV OS v1.4.8.8 (tty1)\x1b[0m", 1, count=5)
+    t.gen_text("\x1b[93mGIF OS v1.0.11 (tty1)\x1b[0m", 1, count=5)
     t.gen_text("login: ", 3, count=5)
     t.toggle_show_cursor(True)
     t.gen_typing_text("Gr00ss", 3, contin=True)
@@ -93,7 +138,7 @@ def main():
     t.gen_text("\x1b[92mclear\x1b[0m", 7, count=3, contin=True)
 
     t.clear_frame()
-    top_languages = [lang for lang in git_user_details.languages_sorted[:5]]
+    top_languages = [lang[0] for lang in git_user_details.languages_sorted]
     
     user_details_lines = f"""
     \x1b[30;101mGr00ss@GitHub\x1b[0m
@@ -106,10 +151,10 @@ def main():
     --------------
     \x1b[96mUser Rating: \x1b[93m{git_user_details.user_rank.level}\x1b[0m
     \x1b[96mTotal Stars Earned: \x1b[93m{git_user_details.total_stargazers}\x1b[0m
-    \x1b[96mTotal Commits ({int(year_now)}): \x1b[93m{git_user_details.total_commits_all_time}\x1b[0m
+    \x1b[96mTotal Commits ({int(year_now) - 1}): \x1b[93m{git_user_details.total_commits_last_year}\x1b[0m
     \x1b[96mTotal PRs: \x1b[93m{git_user_details.total_pull_requests_made}\x1b[0m
     \x1b[96mTotal Contributions: \x1b[93m{git_user_details.total_repo_contributions}\x1b[0m
-    \x1b[96mTop Languages: \x1b[93m{', '.join(top_languages)}\x1b[0m
+    \x1b[96mTop Languages: \x1b[93m{', '.join(top_languages[:5])}\x1b[0m
     """
     
     t.gen_prompt(1)
@@ -121,7 +166,6 @@ def main():
     t.gen_text("\x1b[92mfetch.sh\x1b[0m", 1, contin=True)
     t.gen_typing_text(" -u Gr00ss", 1, contin=True)
 
-    t.set_font(FONT_FILE_MONA, 16, 0)
     t.toggle_show_cursor(False)
     monaLines = r"""
     \x1b[49m     \x1b[90;100m}}\x1b[49m     \x1b[90;100m}}\x1b[0m
@@ -149,7 +193,6 @@ def main():
     """
     t.gen_text(monaLines, 10)
 
-    t.set_font(FONT_FILE_BITMAP)
     t.toggle_show_cursor(True)
     t.gen_text(user_details_lines, 2, 35, count=5, contin=True)
     
@@ -164,7 +207,22 @@ def main():
     print("🎬 Generating GIF...")
     t.set_fps(15)
     t.gen_gif()
-    print("✅ GIF generated successfully!")
+    
+    time_now = datetime.now(ZoneInfo("UTC")).strftime("%a %b %d %I:%M:%S %p %Z %Y")
+    readme_file_content = rf"""<div align="justify">
+<picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./output.gif">
+    <source media="(prefers-color-scheme: light)" srcset="./output.gif">
+    <img alt="GIFOS" src="output.gif">
+</picture>
+
+<sub><i>Generated automatically using [x0rzavi/github-readme-terminal](https://github.com/x0rzavi/github-readme-terminal) on {time_now}</i></sub>
+</div>"""
+    
+    with open("README.md", "w") as f:
+        f.write(readme_file_content)
+        print("✅ GIF generated successfully!")
+        print("✅ README.md file generated")
 
 def create_simple_gif():
     from datetime import datetime
@@ -177,7 +235,7 @@ def create_simple_gif():
     t.gen_text("", 1, count=20)
     t.toggle_show_cursor(False)
     year_now = datetime.now(ZoneInfo("UTC")).strftime("%Y")
-    t.gen_text("ZOV_OS Modular BIOS v1.4.8.8", 1)
+    t.gen_text("GIF_OS Modular BIOS v1.0.11", 1)
     t.gen_text(f"Copyright (C) {year_now}, \x1b[31mGr00ss Softwares Inc.\x1b[0m", 2)
     t.gen_text("\x1b[94mGitHub Profile ReadMe Terminal, Rev 1011\x1b[0m", 4)
     t.gen_text("Krypton(tm) GIFCPU - 250Hz", 6)
@@ -200,7 +258,7 @@ def create_simple_gif():
     
     t.clear_frame()
     t.toggle_show_cursor(False)
-    t.gen_text("\x1b[93mZOV OS v1.4.8.8 (tty1)\x1b[0m", 1, count=5)
+    t.gen_text("\x1b[93mGIF OS v1.0.11 (tty1)\x1b[0m", 1, count=5)
     t.gen_text("login: ", 3, count=5)
     t.toggle_show_cursor(True)
     t.gen_typing_text("Gr00ss", 3, contin=True)
