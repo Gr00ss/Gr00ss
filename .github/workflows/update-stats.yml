@@ -29,12 +29,12 @@ jobs:
       - name: Install dependencies
         run: |
           pip install --upgrade pip
-          pip install github-readme-terminal python-dotenv tzdata
+          pip install gifos python-dotenv pillow
       
       - name: Generate stats GIF
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: python generate_stats.py
+        run: python main.py
       
       - name: Commit and push if changed
         run: |

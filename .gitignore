@@ -19,6 +19,7 @@ frames/
 
 # Test files
 main.py
+main.py.backup
 test_generate.py
 test_simple.py
 
