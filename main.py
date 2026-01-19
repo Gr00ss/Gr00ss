@@ -186,7 +186,8 @@ def main():
     try:
         portrait = Image.open("resourses/boretskiy.jpg").convert('RGBA')
         # Изменяем размер, чтобы поместилось в красную рамку (примерно 290x300 пикселей)
-        portrait.thumbnail((300, 300), Image.Resampling.LANCZOS)
+        #portrait.thumbnail((300, 300), Image.Resampling.LANCZOS)
+        portrait = portrait.resize((290, 300), Image.Resampling.LANCZOS)
         
         # Получаем список всех фреймов и сортируем их
         frame_files = sorted(glob.glob("frames/frame_*.png"), key=lambda x: int(re.search(r'frame_(\d+)', x).group(1)))
@@ -197,7 +198,7 @@ def main():
             frame_num = int(re.search(r'frame_(\d+)', frame_path).group(1))
             if frame_num > existing_frames_before:
                 frame = Image.open(frame_path).convert('RGBA')
-                position = (40, 43)  # (x, y) координаты
+                position = (15, 43)  # (x, y) координаты
                 frame.paste(portrait, position, portrait)
                 # Конвертируем обратно в RGB для совместимости с GIF
                 frame = frame.convert('RGB')
