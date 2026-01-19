@@ -1,4 +1,4 @@
 [yoru]
         [yoru.default_colors]
         fg = "#edeff0"
-        bg = "#0d1117"
+        bg = "transparent"

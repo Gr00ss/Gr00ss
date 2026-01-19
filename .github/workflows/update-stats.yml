@@ -2,8 +2,8 @@ name: Update GitHub Stats
 
 on:
   schedule:
-    # Запускается каждый час
-    - cron: '0 * * * *'
+    # Запускается каждые 2 часа
+    - cron: '0 */2 * * *'
   
   # Позволяет запускать вручную
   workflow_dispatch:

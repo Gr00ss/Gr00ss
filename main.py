@@ -44,12 +44,26 @@ def main():
             def _hex_to_rgb(h):
                 if not h:
                     return None
-                h = h.strip().lstrip('#')
-                if len(h) == 8:  # rgba like RRGGBBAA
-                    h = h[:6]
-                if len(h) != 6:
-                    return None
-                return tuple(int(h[i : i + 2], 16) for i in (0, 2, 4))
+                s = h.strip().lower()
+                if s == 'transparent':
+                    return (0, 0, 0, 0)
+                s = s.lstrip('#')
+                # support rrggbbaa (8) or rrggbb (6)
+                if len(s) == 8:
+                    try:
+                        r = int(s[0:2], 16)
+                        g = int(s[2:4], 16)
+                        b = int(s[4:6], 16)
+                        a = int(s[6:8], 16)
+                        return (r, g, b, a)
+                    except Exception:
+                        return None
+                if len(s) == 6:
+                    try:
+                        return tuple(int(s[i : i + 2], 16) for i in (0, 2, 4))
+                    except Exception:
+                        return None
+                return None
 
             fg_rgb = _hex_to_rgb(fg_hex)
             bg_rgb = _hex_to_rgb(bg_hex)
@@ -478,8 +492,7 @@ def main():
                 frame = Image.open(frame_path).convert('RGBA')
                 position = (15, 43)  # (x, y) координаты
                 frame.paste(portrait, position, portrait)
-                # Конвертируем обратно в RGB для совместимости с GIF
-                frame = frame.convert('RGB')
+                # Сохраняем как RGBA PNG, чтобы сохранить альфа-канал (прозрачный фон)
                 frame.save(frame_path)
                 inserted_count += 1
         print(f"INFO: Image inserted into {inserted_count} frames (starting from frame {existing_frames_before + 1}), total frames: {len(frame_files)}")
@@ -490,10 +503,27 @@ def main():
     import subprocess
     
     # Сначала генерируем палитру из ВСЕХ кадров
+    # Normalize all frames to RGBA and make the background transparent
+    try:
+        frame_files_all = sorted(glob.glob("frames/frame_*.png"), key=lambda x: int(re.search(r'frame_(\d+)', x).group(1)))
+        if frame_files_all:
+            # detect background RGB from top-left pixel of first frame
+            first_im = Image.open(frame_files_all[0]).convert('RGBA')
+            bg_rgb = first_im.getpixel((0, 0))[:3]
+            for fp in frame_files_all:
+                im = Image.open(fp).convert('RGBA')
+                data = list(im.getdata())
+                # replace background pixels with transparent alpha
+                newdata = [(r, g, b, 0) if (r, g, b) == bg_rgb else (r, g, b, a) for (r, g, b, a) in data]
+                im.putdata(newdata)
+                im.save(fp)
+    except Exception:
+        pass
+
     palette_result = subprocess.run(
         [
             'ffmpeg', '-y', '-framerate', '15', '-start_number', '1', 
-            '-i', 'frames/frame_%d.png', '-vf', 'palettegen=max_colors=256',
+            '-i', 'frames/frame_%d.png', '-vf', 'palettegen=reserve_transparent=1:max_colors=256',
             'palette.png'
         ],
         capture_output=True,
@@ -507,9 +537,9 @@ def main():
         result = subprocess.run(
             [
                 'ffmpeg', '-y', '-framerate', '15', '-start_number', '1', 
-                '-i', 'frames/frame_%d.png', '-i', 'palette.png',
-                '-lavfi', 'paletteuse=dither=bayer',
-                'output.gif'
+                    '-i', 'frames/frame_%d.png', '-i', 'palette.png',
+                    '-lavfi', '[0:v][1:v] paletteuse=dither=bayer',
+                    'output.gif'
             ],
             capture_output=True,
             text=True

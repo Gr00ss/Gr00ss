@@ -8,6 +8,6 @@ blink_cursor = false
 fps = 15
 
 [colors]
-background = "#0d1117ff"
+background = "#33fa0bff"
 foreground = "#c9d1d9"
 
