@@ -1,17 +1,3 @@
-
-
-<div align="center">
-    <img src="resources/github_back.png" alt="Terminal Background">
-</div>
-
-<div align="justify">
-<picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./output.gif">
-    <source media="(prefers-color-scheme: light)" srcset="./output.gif">
-    <img alt="ZOVOS" src="output.gif">
-</picture>
-</div>
-```markdown
 <div align="center">
     <img src="resources/github_back.png" alt="Terminal Background">
 </div>
@@ -82,4 +68,3 @@
 <span style="color:#8B0000">└──</span> <span style="color:#FF8C00">journalctl --user -u github-profile -f</span>    <span style="color:#8B0000">#</span> <span style="color:#FF6347">View live logs</span>
 
 <span style="color:#8B0000">revenant@arch</span> ~> <span style="color:#FF8C00">[SYSTEM READY]</span> <span style="color:#00FF00">[STATUS: ONLINE]</span>
-```
