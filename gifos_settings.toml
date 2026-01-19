@@ -1,3 +1,7 @@
+[general]
+user_name = "gr00ss"
+host_name = "wagner"
+
 [colors]
-background = "#0d1117"
+background = "#0d1117ff"
 foreground = "#c9d1d9"
