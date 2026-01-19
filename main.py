@@ -25,6 +25,41 @@ def main():
     
     t = gifos.Terminal(750, 500, 15, 15, FONT_FILE_BITMAP, 15)
 
+    # Apply user-provided ANSI colors (terminal background/foreground) if available
+    try:
+        try:
+            import tomllib as _toml
+        except Exception:
+            import toml as _toml
+
+        cfg_path = os.path.join(os.getcwd(), "ansi_escape_colors.toml")
+        if os.path.exists(cfg_path):
+            with open(cfg_path, "rb") as _f:
+                data = _toml.load(_f)
+            yoru = data.get("yoru", {}) or {}
+            default_colors = yoru.get("default_colors", {}) or {}
+            fg_hex = default_colors.get("fg")
+            bg_hex = default_colors.get("bg")
+
+            def _hex_to_rgb(h):
+                if not h:
+                    return None
+                h = h.strip().lstrip('#')
+                if len(h) == 8:  # rgba like RRGGBBAA
+                    h = h[:6]
+                if len(h) != 6:
+                    return None
+                return tuple(int(h[i : i + 2], 16) for i in (0, 2, 4))
+
+            fg_rgb = _hex_to_rgb(fg_hex)
+            bg_rgb = _hex_to_rgb(bg_hex)
+            if bg_rgb is not None:
+                t.set_bg_color(bg_rgb)
+            if fg_rgb is not None:
+                t.set_txt_color(fg_rgb)
+    except Exception:
+        pass
+
     t.gen_text("", 1, count=20)
     t.toggle_show_cursor(False)
     year_now = datetime.now(ZoneInfo("UTC")).strftime("%Y")
