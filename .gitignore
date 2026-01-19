@@ -21,6 +21,7 @@ frames/
 main.py.backup
 test_generate.py
 test_simple.py
+output.gif
 
 # IDE
 .vscode/
