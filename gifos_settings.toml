@@ -1,7 +1,13 @@
 [general]
 user_name = "gr00ss"
 host_name = "wagner"
+debug = false
+cursor = "_"
+show_cursor = true
+blink_cursor = false
+fps = 15
 
 [colors]
 background = "#0d1117ff"
 foreground = "#c9d1d9"
+
