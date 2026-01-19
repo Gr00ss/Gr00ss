@@ -39,11 +39,11 @@
 <span style="color:#8B0000">├──</span> <span style="color:#FF0000">Shell:</span> <span style="color:#FF8C00">/bin/bash</span>
 <span style="color:#8B0000">├──</span> <span style="color:#FF0000">Theme:</span> <span style="color:#FF6347">linux-terminal (dark mode)</span>
 <span style="color:#8B0000">├──</span> <span style="color:#FF0000">Color Scheme:</span> 
-<span style="color:#8B0000">│   ├──</span> <span style="color:#8B0000">Border:</span> <span style="color:#8B0000">dark-red (#8B0000)</span>
-<span style="color:#8B0000">│   ├──</span> <span style="color:#FF0000">Header:</span> <span style="color:#FF0000">red (#FF0000)</span>
-<span style="color:#8B0000">│   ├──</span> <span style="color:#FF6347">Text:</span> <span style="color:#FF6347">light-red (#FF6347)</span>
-<span style="color:#8B0000">│   ├──</span> <span style="color:#FFFFFF">Normal:</span> <span style="color:#FFFFFF">white (#FFFFFF)</span>
-<span style="color:#8B0000">│   └──</span> <span style="color:#FFA500">Commands:</span> <span style="color:#FFA500">orange (#FFA500)</span>
+<span style="color:#800020">│   ├──</span> <span style="color:#8B0000">Border:</span> <span style="color:#800020">burgundy (#800020)</span>
+<span style="color:#8B0000">│   ├──</span> <span style="color:#8B0000">Dark-Red:</span> <span style="color:#8B0000">dark-red (#8B0000)</span>
+<span style="color:#FF0000">│   ├──</span> <span style="color:#FF0000">Header / Red:</span> <span style="color:#FF0000">red (#FF0000)</span>
+<span style="color:#FF6347">│   ├──</span> <span style="color:#FF6347">Text (Light-Red):</span> <span style="color:#FF6347">light-red (#FF6347)</span>
+<span style="color:#FFFFFF">│   └──</span> <span style="color:#FFFFFF">Normal (White):</span> <span style="color:#FFFFFF">white (#FFFFFF)</span>
 <span style="color:#8B0000">└──</span> <span style="color:#FF0000">Status:</span> <span style="color:#00FF00">ACTIVE</span>
 
 <span style="color:#8B0000">Recent Activity Log:</span>
