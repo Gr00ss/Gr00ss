@@ -34,7 +34,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install --upgrade pip
-          pip install gifos python-dotenv pillow
+          pip install github-readme-terminal python-dotenv pillow
       
       - name: Generate stats GIF
         env:
