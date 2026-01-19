@@ -474,9 +474,27 @@ def main():
     import glob
     import re
     
-    # Загружаем изображение
+    # Загружаем изображение: выбираем случайную картинку из resources/neofetch
     try:
-        portrait = Image.open("resourses/boretskiy.jpg").convert('RGBA')
+        import random
+
+        def find_random_portrait():
+            # Strictly pick only from resources/neofetch
+            d = os.path.join("resources", "neofetch")
+            exts = ("*.png", "*.jpg", "*.jpeg", "*.webp")
+            candidates = []
+            if os.path.isdir(d):
+                for e in exts:
+                    candidates.extend(glob.glob(os.path.join(d, e)))
+            if candidates:
+                import random as _r
+                return _r.choice(candidates)
+            raise FileNotFoundError(f"No portraits found in {d}")
+
+        portrait_path = find_random_portrait()
+        if not portrait_path:
+            raise FileNotFoundError("No portrait found in resources")
+        portrait = Image.open(portrait_path).convert('RGBA')
         # Изменяем размер, чтобы поместилось в красную рамку (примерно 290x300 пикселей)
         #portrait.thumbnail((300, 300), Image.Resampling.LANCZOS)
         portrait = portrait.resize((290, 300), Image.Resampling.LANCZOS)
