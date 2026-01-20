@@ -3,77 +3,77 @@
   <rect width="0%" height="0%" fill="#0a0a0a"/>
   
   <!-- Terminal border -->
-  <rect x="10" y="10" width="980" height="1050" rx="5" fill="none" stroke="#8B0000" stroke-width="2"/>
+  <rect x="10" y="10" width="980" height="1050" rx="10" fill="none" stroke="#df5b61" stroke-width="1"/>
   
   <!-- Content with proper line spacing -->
-  <text x="20" y="60" fill="#8B0000">revenant@arch</text><text x="135" y="60" fill="#FFFFFF">~></text><text x="160" y="60" fill="#FF8C00">systemctl --user status github-profile.service</text>
+  <text x="20" y="60" fill="#df5b61">gr00ss@arch</text><text x="115" y="60" fill="#FFFFFF">~></text><text x="135" y="60" fill="#FF8C00">systemctl --user status github-profile.service</text>
   
-  <text x="20" y="85" fill="#8B0000">●</text><text x="40" y="85" fill="#FF0000">github-profile.service</text><text x="260" y="85" fill="#FF6347">- GitHub Profile Service</text>
+  <text x="20" y="85" fill="#df5b61">●</text><text x="40" y="85" fill="#FF0000">github-profile.service</text><text x="230" y="85" fill="#FF6347">- GitHub Profile Service</text>
   
-  <text x="40" y="110" fill="#8B0000">Loaded:</text><text x="120" y="110" fill="#FFFFFF">loaded (/home/revenant/.config/systemd/user/github-profile.service; enabled; preset: enabled)</text>
+  <text x="40" y="110" fill="#df5b61">Loaded:</text><text x="120" y="110" fill="#FFFFFF">loaded (/home/revenant/.config/systemd/user/github-profile.service; enabled; preset: enabled)</text>
   
-  <text x="40" y="135" fill="#8B0000">Active:</text><text x="120" y="135" fill="#00FF00">active (running)</text><text x="260" y="135" fill="#FFFFFF">since Tue 2026-01-20 14:23:17 MSK; 3h 42min ago</text>
+  <text x="40" y="135" fill="#df5b61">Active:</text><text x="120" y="135" fill="#00FF00">active (running)</text><text x="260" y="135" fill="#FFFFFF">since Tue 2026-01-20 14:23:17 MSK; 3h 42min ago</text>
   
-  <text x="40" y="160" fill="#8B0000">Invocation:</text><text x="150" y="160" fill="#FFFFFF">0x7f8a9c2e3b4d5f6a7b8c9d0e1f2a3b4c</text>
+  <text x="40" y="160" fill="#df5b61">Invocation:</text><text x="150" y="160" fill="#FFFFFF">0x7f8a9c2e3b4d5f6a7b8c9d0e1f2a3b4c</text>
   
-  <text x="40" y="185" fill="#8B0000">Main PID:</text><text x="130" y="185" fill="#FFFFFF">1488 (</text><text x="185" y="185" fill="#FF8C00">gr00ss</text><text x="240" y="185" fill="#FFFFFF">)</text>
+  <text x="40" y="185" fill="#df5b61">Main PID:</text><text x="130" y="185" fill="#FFFFFF">1488 (</text><text x="185" y="185" fill="#FF8C00">gr00ss</text><text x="240" y="185" fill="#FFFFFF">)</text>
   
-  <text x="40" y="210" fill="#8B0000">Tasks:</text><text x="120" y="210" fill="#FFFFFF">8 (limit: 8873)</text>
+  <text x="40" y="210" fill="#df5b61">Tasks:</text><text x="120" y="210" fill="#FFFFFF">8 (limit: 8873)</text>
   
-  <text x="40" y="235" fill="#8B0000">Memory:</text><text x="120" y="235" fill="#FFFFFF">256M (peak: 512M)</text>
+  <text x="40" y="235" fill="#df5b61">Memory:</text><text x="120" y="235" fill="#FFFFFF">256M (peak: 512M)</text>
   
-  <text x="40" y="260" fill="#8B0000">CPU:</text><text x="120" y="260" fill="#FFFFFF">1.25h</text>
+  <text x="40" y="260" fill="#df5b61">CPU:</text><text x="120" y="260" fill="#FFFFFF">1.25h</text>
   
-  <text x="40" y="285" fill="#8B0000">CGroup:</text><text x="120" y="285" fill="#FFFFFF">/user.slice/user-1000.slice/user@1000.service/app.slice/github-profile.service</text>
+  <text x="40" y="285" fill="#df5b61">CGroup:</text><text x="120" y="285" fill="#FFFFFF">/user.slice/user-1000.slice/user@1000.service/app.slice/github-profile.service</text>
   
-  <text x="40" y="310" fill="#8B0000">└─1337</text><text x="120" y="310" fill="#FFFFFF">/usr/bin/github-profile -config /home/revenant/.config/github/config.json</text>
+  <text x="40" y="310" fill="#df5b61">└─1337</text><text x="120" y="310" fill="#FFFFFF">/usr/bin/github-profile -config /home/revenant/.config/github/config.json</text>
   
   <!-- Logs with increased line spacing -->
-  <text x="20" y="350" fill="#8B0000">Jan 20 14:23:17</text><text x="150" y="350" fill="#FFFFFF">arch github-profile[1337]:</text><text x="370" y="350" fill="#FF6347">GitHub Profile Engine v3.14.15 (Gr00ss Edition)</text>
+  <text x="20" y="350" fill="#df5b61">Jan 20 14:23:17</text><text x="150" y="350" fill="#FFFFFF">arch github-profile[1337]:</text><text x="370" y="350" fill="#FF6347">GitHub Profile Engine v3.14.1 (Gr00ss Edition)</text>
   
-  <text x="20" y="380" fill="#8B0000">Jan 20 14:23:17</text><text x="150" y="380" fill="#FFFFFF">arch github-profile[1337]:</text><text x="370" y="380" fill="#FF6347">Initializing profile: https://github.com/Gr00ss</text>
+  <text x="20" y="380" fill="#df5b61">Jan 20 14:23:17</text><text x="150" y="380" fill="#FFFFFF">arch github-profile[1337]:</text><text x="370" y="380" fill="#FF6347">Initializing profile: https://github.com/Gr00ss</text>
   
-  <text x="20" y="410" fill="#8B0000">Jan 20 14:23:18</text><text x="150" y="410" fill="#FFFFFF">arch github-profile[1337]:</text><text x="370" y="410" fill="#FF6347">Loading user configuration from /home/revenant/.config/github/config.json</text>
+  <text x="20" y="410" fill="#df5b61">Jan 20 14:23:18</text><text x="150" y="410" fill="#FFFFFF">arch github-profile[1337]:</text><text x="370" y="410" fill="#FF6347">Loading user configuration from /home/revenant/.config/github/config.json</text>
   
-  <text x="20" y="440" fill="#8B0000">Jan 20 14:23:19</text><text x="150" y="440" fill="#FFFFFF">arch github-profile[1337]:</text><text x="370" y="440" fill="#00FF00">✓</text><text x="390" y="440" fill="#FF6347">Skills matrix loaded: C, C++, Python, JavaScript, Bash</text>
+  <text x="20" y="440" fill="#df5b61">Jan 20 14:23:19</text><text x="150" y="440" fill="#FFFFFF">arch github-profile[1337]:</text><text x="370" y="440" fill="#00FF00">✓</text><text x="390" y="440" fill="#FF6347">Skills matrix loaded: C, C++, Python, Bash</text>
   
-  <text x="20" y="470" fill="#8B0000">Jan 20 14:23:20</text><text x="150" y="470" fill="#FFFFFF">arch github-profile[1337]:</text><text x="370" y="470" fill="#00FF00">✓</text><text x="390" y="470" fill="#FF6347">Project repositories indexed: 12 active projects</text>
+  <text x="20" y="470" fill="#df5b61">Jan 20 14:23:20</text><text x="150" y="470" fill="#FFFFFF">arch github-profile[1337]:</text><text x="370" y="470" fill="#00FF00">✓</text><text x="390" y="470" fill="#FF6347">Project repositories indexed: 12 active projects</text>
   
-  <text x="20" y="500" fill="#8B0000">Jan 20 14:23:21</text><text x="150" y="500" fill="#FFFFFF">arch github-profile[1337]:</text><text x="370" y="500" fill="#00FF00">✓</text><text x="390" y="500" fill="#FF6347">SSH keys verified: ed25519-key-20260120@gr00ss.system</text>
+  <text x="20" y="500" fill="#df5b61">Jan 20 14:23:21</text><text x="150" y="500" fill="#FFFFFF">arch github-profile[1337]:</text><text x="370" y="500" fill="#00FF00">✓</text><text x="390" y="500" fill="#FF6347">SSH keys verified: ed25519-key-20260120@gr00ss.system</text>
   
-  <text x="20" y="530" fill="#8B0000">Jan 20 14:23:22</text><text x="150" y="530" fill="#FFFFFF">arch github-profile[1337]:</text><text x="370" y="530" fill="#FFA500">[INFO]</text><text x="430" y="530" fill="#FF6347">Profile optimization: terminal theme applied</text>
+  <text x="20" y="530" fill="#df5b61">Jan 20 14:23:22</text><text x="150" y="530" fill="#FFFFFF">arch github-profile[1337]:</text><text x="370" y="530" fill="#FFA500">[INFO]</text><text x="430" y="530" fill="#FF6347">Profile optimization: terminal theme applied</text>
   
-  <text x="20" y="560" fill="#8B0000">Jan 20 14:23:23</text><text x="150" y="560" fill="#FFFFFF">arch github-profile[1337]:</text><text x="370" y="560" fill="#00FF00">✓</text><text x="390" y="560" fill="#FF6347">Profile status: ONLINE and READY</text>
+  <text x="20" y="560" fill="#df5b61">Jan 20 14:23:23</text><text x="150" y="560" fill="#FFFFFF">arch github-profile[1337]:</text><text x="370" y="560" fill="#00FF00">✓</text><text x="390" y="560" fill="#FF6347">Profile status: ONLINE and READY</text>
   
-  <text x="20" y="590" fill="#8B0000">Jan 20 14:23:24</text><text x="150" y="590" fill="#FFFFFF">arch github-profile[1337]:</text><text x="370" y="590" fill="#FFA500">[WARNING]</text><text x="450" y="590" fill="#FF6347">Memory usage high: 256M - consider optimizing README.md</text>
+  <text x="20" y="590" fill="#df5b61">Jan 20 14:23:24</text><text x="150" y="590" fill="#FFFFFF">arch github-profile[1337]:</text><text x="370" y="590" fill="#FFA500">[WARNING]</text><text x="450" y="590" fill="#FF6347">Memory usage high: 256M - consider optimizing README.md</text>
   
-  <text x="20" y="620" fill="#8B0000">Jan 20 14:23:25</text><text x="150" y="620" fill="#FFFFFF">arch github-profile[1337]:</text><text x="370" y="620" fill="#00FF00">[SUCCESS]</text><text x="450" y="620" fill="#FF6347">Profile service started successfully</text>
+  <text x="20" y="620" fill="#df5b61">Jan 20 14:23:25</text><text x="150" y="620" fill="#FFFFFF">arch github-profile[1337]:</text><text x="370" y="620" fill="#00FF00">[SUCCESS]</text><text x="450" y="620" fill="#FF6347">Profile service started successfully</text>
   
   <!-- Configuration -->
-  <text x="20" y="660" fill="#8B0000">Profile Configuration:</text>
+  <text x="20" y="660" fill="#df5b61">Profile Configuration:</text>
   
-  <text x="40" y="690" fill="#8B0000">├──</text><text x="80" y="690" fill="#FF0000">User:</text><text x="125" y="690" fill="#FF6347">Gr00ss</text>
+  <text x="40" y="690" fill="#df5b61">├──</text><text x="80" y="690" fill="#FF0000">User:</text><text x="125" y="690" fill="#FF6347">Gr00ss</text>
   
-  <text x="40" y="720" fill="#8B0000">├──</text><text x="80" y="720" fill="#FF0000">Location:</text><text x="155" y="720" fill="#FF6347">/home/revenant/github/Gr00ss</text>
+  <text x="40" y="720" fill="#df5b61">├──</text><text x="80" y="720" fill="#FF0000">Location:</text><text x="155" y="720" fill="#FF6347">/home/revenant/github/Gr00ss</text>
   
-  <text x="40" y="750" fill="#8B0000">├──</text><text x="80" y="750" fill="#FF0000">Shell:</text><text x="132" y="750" fill="#FF8C00">/bin/bash</text>
+  <text x="40" y="750" fill="#df5b61">├──</text><text x="80" y="750" fill="#FF0000">Shell:</text><text x="132" y="750" fill="#FF8C00">/bin/bash</text>
   
-  <text x="40" y="780" fill="#8B0000">├──</text><text x="80" y="780" fill="#FF0000">Theme:</text><text x="132" y="780" fill="#FF6347">linux-terminal (dark mode)</text>
+  <text x="40" y="780" fill="#df5b61">├──</text><text x="80" y="780" fill="#FF0000">Theme:</text><text x="132" y="780" fill="#FF6347">systemd service (dark mode)</text>
   
-  <text x="40" y="810" fill="#8B0000">├──</text><text x="80" y="810" fill="#FF0000">Color Scheme:</text>
+  <text x="40" y="810" fill="#df5b61">├──</text><text x="80" y="810" fill="#FF0000">Color Scheme:</text>
   
-  <text x="60" y="840" fill="#8B0000">│   ├──</text><text x="140" y="840" fill="#8B0000">Border:</text><text x="210" y="840" fill="#8B0000">dark-red (#8B0000)</text>
+  <text x="60" y="840" fill="#df5b61">│   ├──</text><text x="115" y="840" fill="#df5b61">Border:</text><text x="176" y="840" fill="#df5b61">dark-red (#df5b61)</text>
   
-  <text x="60" y="870" fill="#8B0000">│   ├──</text><text x="140" y="870" fill="#FF0000">Header:</text><text x="210" y="870" fill="#FF0000">red (#FF0000)</text>
+  <text x="60" y="870" fill="#df5b61">│   ├──</text><text x="115" y="870" fill="#FF0000">Header:</text><text x="176" y="870" fill="#FF0000">red (#FF0000)</text>
   
-  <text x="60" y="900" fill="#8B0000">│   ├──</text><text x="140" y="900" fill="#FF6347">Text:</text><text x="189" y="900" fill="#FF6347">light-red (#FF6347)</text>
+  <text x="60" y="900" fill="#df5b61">│   ├──</text><text x="115" y="900" fill="#FF6347">Text:</text><text x="163" y="900" fill="#FF6347">light-red (#FF6347)</text>
   
-  <text x="60" y="930" fill="#8B0000">│   ├──</text><text x="140" y="930" fill="#FFFFFF">Normal:</text><text x="206" y="930" fill="#FFFFFF">white (#FFFFFF)</text>
+  <text x="60" y="930" fill="#df5b61">│   ├──</text><text x="115" y="930" fill="#FFFFFF">Normal:</text><text x="179" y="930" fill="#FFFFFF">white (#FFFFFF)</text>
   
-  <text x="60" y="960" fill="#8B0000">│   └──</text><text x="140" y="960" fill="#FFA500">Commands:</text><text x="230" y="960" fill="#FFA500">orange (#FFA500)</text>
+  <text x="60" y="960" fill="#df5b61">│   └──</text><text x="115" y="960" fill="#FFA500">Commands:</text><text x="195" y="960" fill="#FFA500">orange (#FFA500)</text>
   
-  <text x="40" y="990" fill="#8B0000">└──</text><text x="80" y="990" fill="#FF0000">Status:</text><text x="150" y="990" fill="#00FF00">ACTIVE</text>
+  <text x="40" y="990" fill="#df5b61">└──</text><text x="80" y="990" fill="#FF0000">Status:</text><text x="150" y="990" fill="#00FF00">ACTIVE</text>
   
   <!-- Status line -->
-  <text x="20" y="1020" fill="#8B0000">revenant@arch</text><text x="150" y="1020" fill="#FFFFFF">~></text><text x="180" y="1020" fill="#FF8C00">[SYSTEM READY]</text><text x="320" y="1020" fill="#00FF00">[STATUS: ONLINE]</text>
+  <text x="20" y="1020" fill="#df5b61">gr00ss@arch</text><text x="115" y="1020" fill="#FFFFFF">~></text><text x="135" y="1020" fill="#FF8C00">[SYSTEM READY]</text><text x="260" y="1020" fill="#00FF00">[STATUS: ONLINE]</text>
 </svg>
