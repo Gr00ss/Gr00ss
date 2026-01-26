@@ -6,15 +6,16 @@
 
 ```markdown
 gr00ss@arch ~> ## About Me
-gr00ss@arch ~> University student specializing in low-level programming and cybersecurity. /
+gr00ss@arch ~> University student specializing in low-level programming and cybersecurity. \
 My focus is on building robust applications and conducting legitimate security assessments.
 ```
 
 ```markdown
 gr00ss@arch ~> ## Technical Skills
 gr00ss@arch ~> **Programming Languages:** C, C++, Python, C#, Assembly (learning)
-gr00ss@arch ~> **Development:** Application development, Discord/Telegram bot development, system programming
-gr00ss@arch ~> **Security:** OSINT (Open Source Intelligence), network reconnaissance, 
+gr00ss@arch ~> **Development:** Application development, Discord/Telegram bot development, \ 
+system programming
+gr00ss@arch ~> **Security:** OSINT (Open Source Intelligence), network reconnaissance, \
 penetration testing (legitimate infrastructure assessments), security research
 ```
 
@@ -42,6 +43,7 @@ gr00ss@arch ~> - Building tools for legitimate penetration testing scenarios
 gr00ss@arch ~> - CI/CD integration with github / internal infrastructure
 
 gr00ss@arch ~> - neofetch
+
                    -`
                   .o+`                   OS: Arch Linux x86_64
                  `ooo/                   Kernel: 6.18.6-arch1-1
@@ -61,14 +63,14 @@ gr00ss@arch ~> - neofetch
   `+sso+:-`                 `.-/+oso:
  `++:.                           `-/+/
  .`                                 `/
+
+gr00ss@arch ~> ## Contact
+gr00ss@arch ~> gr00ss
+gr00ss@arch ~> GitHub: https://github.com/Gr00ss
+
 ```
 
 <p align="center">
     <img src="resources/edited-svg.svg" alt="edited-svg" style="max-width:100%; height:auto;" />
 </p>
 
-```markdown
-gr00ss@arch ~> ## Contact
-gr00ss@arch ~> gr00ss
-gr00ss@arch ~> GitHub: https://github.com/Gr00ss
-```
