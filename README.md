@@ -7,7 +7,7 @@
 ### gr00ss@arch ~> ## About Me
 ```markdown
 gr00ss@arch ~> University student specializing in low-level programming and cybersecurity. \
-My focus is on building robust applications and conducting legitimate security assessments.
+My focus is on building applications and conducting legitimate security assessments.
 ```
 ### gr00ss@arch ~> ## Technical Skills
 
