@@ -43,7 +43,7 @@ gr00ss@arch ~> - Building tools for legitimate penetration testing scenarios
 gr00ss@arch ~> - CI/CD integration with github / internal infrastructure
 
 gr00ss@arch ~> ## Contact
-gr00ss@arch ~> gr00ss
+gr00ss@arch ~> Discord: gr00ss
 gr00ss@arch ~> GitHub: https://github.com/Gr00ss
 
 ```
